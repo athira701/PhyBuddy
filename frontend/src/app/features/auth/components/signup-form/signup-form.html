@@ -1,0 +1,120 @@
+<div class="signup-content">
+  <div class="signup-card">
+    <!-- Signup Form -->
+    <form class="signup-body" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+
+        <input
+          id="fullName"
+          type="text"
+          formControlName="name"
+          placeholder="Enter your full name"
+        />
+      </div>
+
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email address"
+        />
+      </div>
+
+     
+      <div class="form-group">
+        <label for="password">Create Password</label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+      </div>
+
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+        />
+      </div>
+
+      <!-- Role Selection -->
+      <div class="role-section">
+        <p class="role-title">I WANT TO...</p>
+
+        <div class="role-grid">
+          <!-- Student Card -->
+          <div
+            class="role-card"
+            [class.selected]="selectedRole() === 'student'"
+            (click)="selectRole('student')"
+          >
+            @if (selectedRole() === 'student') {
+              <div class="selected-badge">
+                <lucide-angular [img]="CircleCheck"></lucide-angular>
+              </div>
+            }
+
+            <div class="role-icon">
+              <lucide-angular [img]="GraduationCap" class="role-icon-svg"> </lucide-angular>
+            </div>
+
+            <h4>Student</h4>
+
+            <p>Explore concepts visually through play</p>
+          </div>
+
+          <!-- Tutor Card -->
+          <div
+            class="role-card"
+            [class.selected]="selectedRole() === 'tutor'"
+            (click)="selectRole('tutor')"
+          >
+            @if (selectedRole() === 'tutor') {
+              <div class="selected-badge">
+                <lucide-angular [img]="CircleCheck"></lucide-angular>
+              </div>
+            }
+
+            <div class="role-icon">
+              <lucide-angular [img]="BookOpen" class="role-icon-svg"> </lucide-angular>
+            </div>
+
+            <h4>Tutor</h4>
+
+            <p>Teach and inspire future scientists</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="button-section">
+        <app-primary-button type="submit" [disabled]="signupForm.invalid"> Create Account </app-primary-button>
+      </div>
+    </form>
+
+    <!-- Divider Part-->
+    <app-divider> OR JOIN WITH </app-divider>
+
+    <!-- Google Button Part-->
+    <app-google-button></app-google-button>
+
+    <!-- Footer section-->
+    <p class="login-link">
+      Already have an account?
+      <a href=""> Sign In </a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,374 @@
+:host {
+  --color-orange: #ff9d00;
+  --color-cyan: #00f0ff;
+  --color-yellow: #ffee00;
+  --color-dark: #10111a;
+
+  display: block;
+  min-height: 100vh;
+  background: var(--color-dark);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+
+
+.topbar {
+  padding: 22px 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-orange);
+  letter-spacing: 0.5px;
+}
+
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 64px 64px 96px;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+.hero {
+  flex: 1 1 420px;
+  position: relative;
+  max-width: 520px;
+}
+
+.hero-title {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  color: #fff;
+}
+
+.hero-title .accent {
+  color: var(--color-orange);
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 40px;
+  max-width: 420px;
+}
+
+.floating-eq {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  font-size: 20px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.eq-1 {
+  top: -20px;
+  left: 60px;
+  font-size: 22px;
+}
+
+.eq-2 {
+  top: 90px;
+  right: -60px;
+  font-size: 20px;
+}
+
+.eq-3 {
+  bottom: -40px;
+  left: 40px;
+  font-size: 16px;
+}
+
+.mascot-frame {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 55%,
+    rgba(255, 255, 255, 0) 78%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mascot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.form-card {
+  flex: 1 1 380px;
+  max-width: 400px;
+  background: #181a26;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label,
+.field-label-static {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--color-orange);
+  margin-bottom: 8px;
+  text-transform: none;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0e0f17;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrap:focus-within {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15);
+}
+
+.input-icon {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+}
+
+.input-wrap input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+.input-wrap input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+
+.role-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.role-card {
+  position: relative;
+  background: #0e0f17;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.role-card:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+}
+
+.role-card.active {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 1px var(--color-cyan), 0 0 18px rgba(0, 240, 255, 0.25);
+}
+
+.check-badge {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  color: #10111a;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.role-card.active .role-icon {
+  background: rgba(0, 240, 255, 0.15);
+}
+
+.role-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.role-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+}
+
+/* ---------- Buttons ---------- */
+.submit-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  background: var(--color-orange);
+  color: #1a1200;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+  filter: brightness(1.05);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.bolt {
+  font-size: 15px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 22px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.divider span {
+  padding: 0 12px;
+}
+
+.google-btn {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s ease;
+}
+
+.google-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.google-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  color: #10111a;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.signin-text {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 18px 0 0;
+}
+
+.signin-text a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 900px) {
+  .page {
+    padding: 40px 24px 64px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .mascot-frame {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+}

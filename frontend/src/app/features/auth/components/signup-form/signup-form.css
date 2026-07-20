@@ -1,0 +1,295 @@
+.signup-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-6);
+
+}
+
+.signup-card {
+    width: 100%;
+    max-width: 500px;
+
+    background: var(--color-card);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-xl);
+
+    padding: var(--space-8);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.signup-header {
+    text-align: center;
+
+    margin-bottom: var(--space-8);
+}
+
+.signup-header h2 {
+    font-size: 2rem;
+
+    font-weight: var(--font-weight-bold);
+
+    color: var(--color-text);
+
+    margin-bottom: var(--space-2);
+}
+
+.signup-header p {
+    color: var(--color-text-secondary);
+
+    font-size: var(--fs-sm);
+}
+
+.signup-header a {
+    color: var(--color-primary);
+
+    text-decoration: none;
+
+    font-weight: var(--font-weight-medium);
+}
+
+.signup-header a:hover {
+    text-decoration: underline;
+}
+
+.signup-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.form-group label {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 1rem;
+
+    background: #16171F;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-md);
+
+    color: var(--color-text);
+
+    font-size: 1rem;
+
+    transition: .25s;
+}
+
+.form-group input::placeholder {
+    color: #7E8090;
+}
+
+.form-group input:focus {
+    outline: none;
+
+    border-color: var(--color-primary);
+
+    box-shadow: 0 0 0 3px rgba(255,157,0,.15);
+}
+
+/* ---------- Role Section ---------- */
+
+.role-section {
+
+    margin-top: 2rem;
+
+}
+
+.role-title {
+
+    color: #8E90A2;
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 1rem;
+
+    text-transform: uppercase;
+
+}
+
+/* ---------- Grid ---------- */
+
+.role-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1rem;
+
+}
+
+/* ---------- Card ---------- */
+
+.role-card {
+
+    position: relative;
+
+    background: #1B1D28;
+
+    border: 1px solid #2F3242;
+
+    border-radius: 18px;
+
+    padding: 1.5rem;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+
+}
+.role-card h4{
+
+    font-size:1.25rem;
+
+    font-weight:600;
+
+}
+
+.role-card:hover {
+
+    transform: translateY(-3px);
+
+}
+
+/* ---------- Selected ---------- */
+
+.role-card.selected {
+
+    border: 2px solid #00E5FF;
+
+    box-shadow: 0 0 20px rgba(0,229,255,.25);
+
+}
+
+/* ---------- Check Badge ---------- */
+
+.selected-badge {
+
+    position:absolute;
+
+    top:-8px;
+
+    right:-8px; 
+
+    width: 22px;
+
+    height: 22px;
+
+    border-radius: 50%;
+
+    background: #00E5FF;
+
+    color: #111;
+
+    font-size: .75rem;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-weight: bold;
+
+}
+
+/* ---------- Icon ---------- */
+
+.role-icon{
+
+    width:56px;
+    height:56px;
+
+    margin:0 auto 1rem;
+
+    border-radius:50%;
+
+    background:rgba(0,240,255,.12);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.role-icon-svg {
+
+    width: 30px;
+
+    height: 30px;
+
+    color: var(--color-secondary);
+
+}
+
+/* ---------- Title ---------- */
+
+.role-card h4 {
+
+    margin-bottom: .5rem;
+
+    color: white;
+
+}
+
+/* ---------- Description ---------- */
+
+.role-card p {
+
+    font-size: .78rem;
+
+    line-height: 1.4;
+
+    color: #9EA0AE;
+
+}
+
+.button-section{
+    margin-top: var(--space-6);
+}
+
+.login-link{
+
+    margin-top: var(--space-6);
+
+    text-align:center;
+
+    font-size:var(--fs-sm);
+
+    color:var(--color-text-secondary);
+
+}
+
+.login-link a{
+
+    color:var(--color-primary);
+
+    font-weight:600;
+
+}

@@ -1,0 +1,39 @@
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+    width: 100%;
+
+    margin: var(--space-8) 0;
+
+}
+
+.divider-line {
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--color-border);
+
+}
+
+.divider-text {
+
+    color: var(--color-text-secondary);
+
+    font-size: var(--fs-xs);
+
+    font-weight: var(--font-weight-medium);
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+}

@@ -1,0 +1,36 @@
+/* Global Styles */
+
+body {
+
+    background: var(--color-background);
+
+    color: var(--color-text-primary);
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+input,
+textarea {
+
+    outline: none;
+
+}
+
+button {
+
+    transition: var(--transition-normal);
+
+}
+
+::selection {
+
+    background: var(--color-primary);
+
+    color: var(--color-background);
+
+}
