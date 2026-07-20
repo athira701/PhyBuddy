@@ -1,0 +1,37 @@
+import { Model, Types } from "mongoose";
+import { IBaseRepository } from "../../../domain/repositories/base.repository";
+
+
+export type WithId = {
+    _id?: string | Types.ObjectId
+}
+
+export abstract class BaseRepository<T extends WithId> implements IBaseRepository<T>{
+    constructor (protected readonly model : Model<T>){}
+
+    async create(data: T): Promise<string> {
+    const doc = await new this.model(data).save();
+    return doc._id.toString();
+  }
+
+  async findById(id: string): Promise<T | null> {
+    const doc = await this.model.findById(id).lean<T>();
+    return doc ?? null;
+  }
+
+  async update(data: Partial<T>, id: string): Promise<T | null> {
+    const doc = await this.model
+      .findByIdAndUpdate(id, data, {
+        returnDocument: "after",
+      })
+      .lean<T>();
+
+    return doc ?? null;
+  }
+
+  async deleteById(id: string): Promise<T | null> {
+    const doc = await this.model.findByIdAndDelete(id).lean<T>();
+
+    return doc ?? null;
+  }
+}

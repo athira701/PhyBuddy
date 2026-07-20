@@ -1,9 +1,10 @@
 import { model, Schema } from "mongoose";
+import { User } from "../../../domain/user/entities/user.entity";
 import { UserRole } from "../../../shared/enums/user-role.enum";
 import { UserStatus } from "../../../shared/enums/user-status.enum";
 
 
-const userSchema = new Schema(
+const userSchema = new Schema<User>(
   {
     name: {
       type: String,
@@ -42,6 +43,6 @@ const userSchema = new Schema(
     timestamps: true,
   },
 );
-const UserModel = model("User", userSchema);
+const UserModel = model<User>("User", userSchema);
 
 export default UserModel;

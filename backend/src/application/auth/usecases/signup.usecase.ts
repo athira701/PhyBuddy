@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { User } from "../../../domain/user/entities/user.entity";
 import { IUserRepository } from "../../../domain/user/repositories/user.repository";
 import { IPasswordService } from "../../../domain/user/services/password-service.interface";
@@ -9,35 +10,34 @@ import { UserStatus } from "../../../shared/enums/user-status.enum";
 import { AppError } from "../../../shared/errors/app-error";
 import { SignupRequestDto } from "../request-dtos/signup-request.dto";
 import { SignupResponseDto } from "../response-dtos/signup-response.dto";
+import { ISignUpUseCase } from "../interfaces/signup-usecase.interface";
+import { SignupMapper } from "../mappers/signup.mapper";
 
-export class SignupUseCase {
+@injectable()
+export class SignupUseCase implements ISignUpUseCase {
   constructor(
-    private readonly userRepository: IUserRepository,
-    private readonly passwordService: IPasswordService,
+    @inject("IUserRepository")
+    private readonly _userRepository: IUserRepository,
+    @inject("IPasswordService")
+    private readonly _passwordService: IPasswordService,
   ) {}
 
   async execute(signupDto: SignupRequestDto): Promise<SignupResponseDto> {
-    const existingUser = await this.userRepository.findByEmail(signupDto.email);
+    const existingUser = await this._userRepository.findByEmail(
+      signupDto.email,
+    );
 
     if (existingUser) {
-      throw new AppError(ErrorMessages.EMAIL_ALREADY_EXISTS,HttpStatus.CONFLICT);
+      throw new AppError(
+        ErrorMessages.EMAIL_ALREADY_EXISTS,
+        HttpStatus.CONFLICT,
+      );
     }
 
-    const hashedPassword = await this.passwordService.hash(signupDto.password);
+    const hashedPassword = await this._passwordService.hash(signupDto.password);
 
-    const newUser: User = {
-      name: signupDto.name,
-      email: signupDto.email,
-      password: hashedPassword,
-      role: signupDto.role,
-      status:
-        signupDto.role === UserRole.STUDENT
-          ? UserStatus.ACTIVE
-          : UserStatus.PENDING,
-      isVerified: false,
-    };
-
-    await this.userRepository.create(newUser);
+    const newUser = SignupMapper.toEntity(signupDto, hashedPassword);
+    await this._userRepository.create(newUser);
 
     return {
       success: true,

@@ -1,5 +1,7 @@
+import "reflect-metadata";
 import express from "express";
 import dotenv from "dotenv";
+import "./config/container"
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";

@@ -10,6 +10,8 @@
     "module": "commonjs",
     "target": "es2022",
     "types": [],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
