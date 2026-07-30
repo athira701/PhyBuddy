@@ -2,7 +2,6 @@
   <div class="signup-card">
     <!-- Signup Form -->
     <form class="signup-body" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      
       <div class="form-group">
         <label for="fullName">Full Name</label>
 
@@ -11,10 +10,13 @@
           type="text"
           formControlName="name"
           placeholder="Enter your full name"
+          [class.invalid]="name.invalid && name.touched"
         />
+        @if (name.touched && name.hasError('required')) {
+          <small class="error-text">Full name is required</small>
+        }
       </div>
 
-      
       <div class="form-group">
         <label for="email">Email Address</label>
 
@@ -23,10 +25,17 @@
           type="email"
           formControlName="email"
           placeholder="Enter your email address"
+          [class.invalid]="email.invalid && email.touched"
         />
+
+        @if (email.touched && email.hasError('required')) {
+          <small class="error-text">Email is required</small>
+        }
+        @if (email.touched && email.hasError('email')) {
+          <small class="error-text"> Please enter a valid email address. </small>
+        }
       </div>
 
-     
       <div class="form-group">
         <label for="password">Create Password</label>
 
@@ -35,9 +44,15 @@
           type="password"
           formControlName="password"
           placeholder="Enter your password"
+          [class.invalid]="password.invalid && password.touched"
         />
+        @if (password.touched && password.hasError('required')) {
+          <small class="error-text">Password id required</small>
+        }
+        @if (password.touched && password.hasError('minlength')) {
+          <small class="error-text">Password must be at least 8 characters </small>
+        }
       </div>
-
 
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
@@ -47,7 +62,20 @@
           type="password"
           formControlName="confirmPassword"
           placeholder="Confirm your password"
+          [class.invalid]="
+            (confirmPassword.invalid && confirmPassword.touched) ||
+            (password.touched && confirmPassword.touched && signupForm.hasError('passwordMismatch'))
+          "
         />
+        @if (confirmPassword.touched && confirmPassword.hasError('required')) {
+          <small class="error-text">Please confirm your password</small>
+        }
+
+        @if (
+          password.touched && confirmPassword.touched && signupForm.hasError('passwordMismatch')
+        ) {
+          <small class="error-text"> Passwords do not match. </small>
+        }
       </div>
 
       <!-- Role Selection -->
@@ -99,9 +127,26 @@
         </div>
       </div>
 
+      @if (errorMessage()) {
+
+  <div class="server-error">
+
+    {{ errorMessage() }}
+
+  </div>
+
+}
+
       <!-- Submit Button -->
       <div class="button-section">
-        <app-primary-button type="submit" [disabled]="signupForm.invalid"> Create Account </app-primary-button>
+        <app-primary-button type="submit" [disabled]="signupForm.invalid || isLoading()">
+           @if (isLoading()) {
+    Creating Account...
+  } @else {
+    Create Account
+  }
+
+        </app-primary-button>
       </div>
     </form>
 

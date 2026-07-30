@@ -1,5 +1,7 @@
 .hero-container {
 
+    position: relative;
+
     height: 100%;
 
     display: flex;
@@ -8,11 +10,29 @@
 
     justify-content: space-between;
 
+    padding-top: 100px;   /* Space for the logo */
+
 }
 
 .hero-logo {
 
-    margin-bottom: var(--space-12);
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: 10;
+
+}
+
+.hero-logo img {
+
+    width: 240px;      /* Adjust as needed */
+
+    height: auto;
+
+    display: block;
 
 }
 
@@ -24,7 +44,7 @@
 
 .hero-content h1 {
 
-    font-size: clamp(3rem,5vw,4.5rem);
+    font-size: clamp(3rem, 5vw, 4.5rem);
 
     font-weight: var(--font-weight-bold);
 

@@ -1,50 +1,30 @@
 .auth-layout {
 
     min-height: 100vh;
-
     display: grid;
-
     grid-template-columns: 1.2fr 1fr;
 
     max-width: 1600px;
     margin: 0 auto;
+
     background: var(--color-background);
 
 }
 
-/* Left */
+/* LEFT */
 
 .hero-section {
 
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
-    justify-content: flex-end;
-
-    align-items: center;
-
-    padding: var(--space-16);
-
-    overflow: hidden;
+    padding: 48px 64px;
 
 }
 
-.hero-container {
-    max-width: 560px;
-    width: 100%;
-}
+.hero-section app-brand {
 
-/* Right */
-
-.content-section {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    background: var(--color-surface);
-
-    padding: var(--space-10);
+    margin-bottom: 72px;
 
 }

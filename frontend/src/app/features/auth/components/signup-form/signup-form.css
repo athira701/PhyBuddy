@@ -105,6 +105,17 @@
     box-shadow: 0 0 0 3px rgba(255,157,0,.15);
 }
 
+.error-text {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--color-error);
+  font-size: 0.875rem;
+}
+
+input.invalid {
+  border-color: var(--color-error);
+}
+
 /* ---------- Role Section ---------- */
 
 .role-section {
@@ -291,5 +302,21 @@
     color:var(--color-primary);
 
     font-weight:600;
+
+}
+
+.server-error {
+
+  padding: 12px;
+
+  margin-bottom: 1rem;
+
+  border-radius: 8px;
+
+  background: rgba(255, 0, 0, 0.08);
+
+  color: var(--color-error);
+
+  font-size: var(--fs-sm);
 
 }
