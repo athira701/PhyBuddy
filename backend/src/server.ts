@@ -1,6 +1,7 @@
-import "reflect-metadata";
+import "reflect-metadata"; 
+import dotenv from "dotenv"; 
+dotenv.config(); 
 import express from "express";
-import dotenv from "dotenv";
 import "./config/container"
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -10,13 +11,13 @@ import { connectDB } from "./infrastructure/database/connection/connectDB";
 import router from "./presentation/routes";
 import { errorHandler } from "./shared/errors/error.middleware";
 
-dotenv.config();
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "http://localhost:4200",

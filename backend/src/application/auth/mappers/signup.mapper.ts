@@ -17,4 +17,4 @@ export class SignupMapper {
       isVerified: false,
     };
   }
-}
+} 

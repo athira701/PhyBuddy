@@ -10,7 +10,7 @@ export class AuthController {
 
   async signup(req: Request, res: Response): Promise<void> {
     const signupDto: SignupRequestDto = req.body;
-
+    console.log(req.body);
     const response = await this._signupUseCase.execute(signupDto);
 
     res.status(HttpStatus.CREATED).json(response)

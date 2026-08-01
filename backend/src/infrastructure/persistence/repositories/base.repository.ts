@@ -9,9 +9,9 @@ export type WithId = {
 export abstract class BaseRepository<T extends WithId> implements IBaseRepository<T>{
     constructor (protected readonly model : Model<T>){}
 
-    async create(data: T): Promise<string> {
+    async create(data: T): Promise<T> {
     const doc = await new this.model(data).save();
-    return doc._id.toString();
+    return doc.toObject() as T;
   }
 
   async findById(id: string): Promise<T | null> {
