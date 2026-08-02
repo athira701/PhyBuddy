@@ -2,6 +2,7 @@ import { Router } from "express";
 import { container } from "tsyringe";
 import { validateRequest } from "../middlewares/validate-request";
 import {
+  resendOtpValidator,
   signupValidator,
   verifyOtpValidator,
 } from "../validators/auth.validator";
@@ -22,4 +23,9 @@ authRouter.post(
   authController.verifyOtp.bind(authController),
 );
 
+authRouter.post(
+  "/resend-otp",
+  validateRequest(resendOtpValidator),
+  authController.resendOtp.bind(authController),
+);
 export default authRouter;
