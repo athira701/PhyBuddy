@@ -16,7 +16,6 @@ import { IOtpRepository } from "../../../domain/user/repositories/otp.repository
 import { IOtpService } from "../../../domain/user/services/otp-service.interface";
 import { IEmailService } from "../../../domain/user/services/email-service.interface";
 
-
 @injectable()
 export class SignupUseCase implements ISignUpUseCase {
   constructor(
@@ -29,8 +28,7 @@ export class SignupUseCase implements ISignUpUseCase {
     @inject("IOtpService")
     private readonly _otpService: IOtpService,
     @inject("IEmailService")
-      private readonly _emailService: IEmailService
-    
+    private readonly _emailService: IEmailService,
   ) {}
 
   async execute(signupDto: SignupRequestDto): Promise<SignupResponseDto> {
@@ -51,21 +49,20 @@ export class SignupUseCase implements ISignUpUseCase {
 
     const createdUser = await this._userRepository.create(newUser);
 
-    const otp = this._otpService.generateOtp()
+    const otp = this._otpService.generateOtp();
 
-    const expiry = this._otpService.generateExpiryTime()
+    const expiry = this._otpService.generateExpiryTime();
 
-    await this._otpRepository.deleteByUserId(createdUser._id!)
+    await this._otpRepository.deleteByUserId(createdUser._id!);
 
     await this._otpRepository.createOtp({
       userId: createdUser._id!,
-      code:otp,
+      code: otp,
       expiresAt: expiry,
       isUsed: false,
+    });
 
-    })
-
-    await this._emailService.sendOtpEmail(createdUser.email,otp)
+    await this._emailService.sendOtpEmail(createdUser.email, otp);
 
     return {
       success: true,

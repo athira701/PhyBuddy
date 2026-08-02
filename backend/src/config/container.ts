@@ -6,6 +6,7 @@ import { SignupUseCase } from "../application/auth/usecases/signup.usecase";
 import { OtpService } from "../infrastructure/security/otp.service";
 import { MongoOtpRepository } from "../infrastructure/persistence/repositories/mongo-otp.repository";
 import { NodeMailerEmailService } from "../infrastructure/mail/nodemailer-email.service";
+import { VerifyOtpUseCase } from "../application/auth/usecases/verify-otp.usecase";
 
 container.registerSingleton("IUserRepository", MongoUserRepository);
 
@@ -16,5 +17,6 @@ container.registerSingleton("IOtpRepository",MongoOtpRepository)
 container.registerSingleton("IEmailService",NodeMailerEmailService)
 
 container.registerSingleton("ISignUpUseCase", SignupUseCase);
+container.registerSingleton("IVerifyOtpUseCase",VerifyOtpUseCase)
 
 export { container };

@@ -5,4 +5,7 @@ export const ErrorMessages = {
   ACCOUNT_BLOCKED: "Your account has been blocked.",
   ACCOUNT_NOT_VERIFIED: "Please verify your email.",
   INTERNAL_SERVER_ERROR: "Something went wrong. Please try again later.",
+  INVALID_OTP:"Invalid OTP",
+  OTP_EXPIRED:"OTP expired",
+  EMAIL_ALREADY_VERIFIED:"Email is already verified."
 } as const;
