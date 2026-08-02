@@ -1,0 +1,28 @@
+.countdown-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:var(--space-2);
+}
+
+.timer-label{
+
+    font-size:var(--fs-sm);
+
+    color:var(--color-text-secondary);
+
+    font-weight:var(--font-weight-medium);
+
+}
+
+.timer-value{
+
+    font-size:var(--fs-xl);
+
+    font-weight:var(--font-weight-bold);
+
+    color:var(--color-secondary);
+
+    letter-spacing:1px;
+
+}

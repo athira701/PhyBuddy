@@ -1,0 +1,45 @@
+<div class="otp-input-group">
+  <input
+    #otpInput
+    type="text"
+    maxlength="1"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    aria-label="OTP digit 1"
+    (input)="onInput($event, 0)"
+    (keydown)="onKeyDown($event, 0)"
+  />
+
+  <input
+    #otpInput
+    type="text"
+    maxlength="1"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    aria-label="OTP digit 2"
+    (input)="onInput($event, 1)"
+    (keydown)="onKeyDown($event, 1)"
+  />
+
+  <input
+    #otpInput
+    type="text"
+    maxlength="1"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    aria-label="OTP digit 3"
+    (input)="onInput($event, 2)"
+    (keydown)="onKeyDown($event, 2)"
+  />
+
+  <input
+    #otpInput
+    type="text"
+    maxlength="1"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    aria-label="OTP digit 4"
+    (input)="onInput($event, 3)"
+    (keydown)="onKeyDown($event, 3)"
+  />
+</div>

@@ -1,0 +1,54 @@
+<div class="otp-page">
+  <app-brand></app-brand>
+
+  <section class="otp-container">
+    <div class="hero-image">
+      <img src="assets/images/auth/otp-astronaut.png" alt="Astronaut Verification" />
+    </div>
+
+    <div class="otp-header">
+      <h2>Verify Your Email</h2>
+
+      <p class="description">We've sent a 4-digit verification code to</p>
+
+      <div class="email-info">
+        <lucide-angular [img]="Mail" class="mail-icon"> </lucide-angular>
+
+        <span>{{ email() }}</span>
+      </div>
+    </div>
+
+    <div class="otp-form">
+      <app-otp-input (otpChange)="onOtpChange($event)"> </app-otp-input>
+
+      @if (errorMessage()) {
+        <p class="error-message">
+          {{ errorMessage() }}
+        </p>
+      }
+
+      <app-countdown-timer [remainingSeconds]="remainingSeconds()"> </app-countdown-timer>
+
+      <app-primary-button (click)="verifyOtp()" [disabled]="otp().length !== 4 || isLoading()">
+        {{ isLoading() ? 'Verifying...' : 'Verify OTP' }}
+      </app-primary-button>
+
+      <div class="resend-section">
+        <p>Didn't receive the code?</p>
+
+        <button type="button" [disabled]="!canResend() || isLoading()" (click)="resendOtp()">{{ isLoading() ? 'Sending...' : 'Resend OTP' }}</button>
+      </div>
+    </div>
+
+    <button class="back-button">
+      <lucide-angular [img]="ArrowLeft" class="back-icon"> </lucide-angular>
+
+      <span>Back to Login</span>
+    </button>
+    @if (errorMessage()) {
+      <p class="error-message">
+        {{ errorMessage() }}
+      </p>
+    }
+  </section>
+</div>

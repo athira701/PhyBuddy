@@ -1,0 +1,164 @@
+
+.otp-page {
+  min-height: 100vh;
+  background: var(--color-background);
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.otp-container {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--space-8);
+}
+
+
+
+.hero-image {
+  margin-bottom: var(--space-6);
+}
+
+.hero-image img {
+  width: 220px;
+  height: auto;
+}
+
+
+.otp-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.otp-header h2 {
+  margin-bottom: var(--space-3);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+
+
+.email-info {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: var(--space-2) var(--space-4);
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-pill);
+}
+
+.mail-icon {
+  width: 18px;
+  height: 18px;
+
+  color: var(--color-secondary);
+}
+
+.email-info span {
+  color: var(--color-text-primary);
+
+  font-weight: var(--font-weight-medium);
+}
+
+
+
+.otp-form {
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-5);
+}
+
+
+
+.error-message {
+  min-height: 20px;
+
+  color: var(--color-error);
+
+  text-align: center;
+
+  font-size: var(--fs-sm);
+}
+
+
+.resend-section {
+  text-align: center;
+}
+
+.resend-section p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.resend-section button {
+  color: var(--color-secondary);
+
+  font-weight: var(--font-weight-semibold);
+
+  transition: var(--transition-normal);
+}
+
+.resend-section button:hover:not(:disabled) {
+  color: var(--color-secondary-hover);
+}
+
+.resend-section button:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  margin-top: var(--space-8);
+
+  color: var(--color-text-secondary);
+
+  transition: var(--transition-normal);
+}
+
+.back-button:hover {
+  color: var(--color-secondary);
+}
+
+.back-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .hero-image img {
+    width: 180px;
+  }
+
+  .otp-form {
+    max-width: 100%;
+  }
+
+}

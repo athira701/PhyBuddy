@@ -8,6 +8,7 @@ import { passwordMatchValidator } from '../../validators/password-match.validato
 import { AuthService } from '../../services/auth.service';
 import { SignupRequest } from '../../models/signup-request.model';
 import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup-form',
   imports: [ReactiveFormsModule, LucideAngularModule, PrimaryButton, Divider, GoogleButton],
@@ -21,6 +22,7 @@ export class SignupForm {
 
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   signupForm = this.fb.nonNullable.group(
     {
@@ -28,7 +30,7 @@ export class SignupForm {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],
-      role: this.fb.nonNullable.control<'student'|'tutor'>('student'),
+      role: this.fb.nonNullable.control<'student' | 'tutor'>('student'),
     },
     { validators: passwordMatchValidator() },
   );
@@ -58,7 +60,7 @@ export class SignupForm {
     this.signupForm.patchValue({ role });
   }
   onSubmit(): void {
-this.errorMessage.set('')
+    this.errorMessage.set('');
 
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
@@ -66,16 +68,21 @@ this.errorMessage.set('')
     }
     const { confirmPassword, ...request } = this.signupForm.getRawValue();
 
-    this.isLoading.set(true)
+    this.isLoading.set(true);
 
-    this.authService.signup(request).pipe(finalize(()=>this.isLoading.set(false))).subscribe({
-      next:(response)=>{
-        console.log(response);
-        
-      },
-      error:(error)=>{
-        this.errorMessage.set(error.error.message)
-      }
-    })
+    this.authService
+      .signup(request)
+      .pipe(finalize(() => this.isLoading.set(false)))
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          sessionStorage.setItem('verificationEmail', request.email);
+
+          void this.router.navigate(['/verify-otp']);
+        },
+        error: (error) => {
+          this.errorMessage.set(error.error.message);
+        },
+      });
   }
 }

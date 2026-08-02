@@ -1,5 +1,5 @@
 
-export interface ApiError {
+export interface ApiResponse {
   success: boolean;
   message: string;
 }
