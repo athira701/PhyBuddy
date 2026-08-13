@@ -49,7 +49,8 @@ export class ResendOtpUseCase implements IResendOtpUseCase {
       expiresAt: expiry,
       isUsed: false,
     });
-
+    console.log(otp);
+    
     await this._emailService.sendOtpEmail(user.email, otp);
 
     return {

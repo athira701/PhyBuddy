@@ -14,5 +14,7 @@ export class MongoUserRepository extends BaseRepository<User> implements IUserRe
     return await UserModel.findOne({ email }).lean<User>();
   }
 
-
+// async findByid(userId:string):Promise<User||null>{
+//   return await UserModel.findMany({userId}).regex()
+// }
 }

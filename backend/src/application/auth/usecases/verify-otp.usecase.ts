@@ -33,6 +33,7 @@ export class VerifyOtpUseCase implements IVerifyOtpUseCase {
       user._id!,
       verifyOtpDto.otp,
     );
+    console.log("OTP:",otp)
     if (!otp) {
       throw new AppError(ErrorMessages.INVALID_OTP, HttpStatus.BAD_REQUEST);
     }
